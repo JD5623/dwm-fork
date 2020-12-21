@@ -1640,8 +1640,11 @@ sigchld(int unused)
 void
 spawn(const Arg *arg)
 {
+	int nm=0;
+	for (Monitor *m = mons; m != NULL; m = m->next, nm++);
+	nm-=1;
 	if (arg->v == dmenucmd)
-		dmenumon[0] = '0' + selmon->num;
+		dmenumon[0] = '0' + (nm - selmon->num);
 	if (fork() == 0) {
 		if (dpy)
 			close(ConnectionNumber(dpy));
