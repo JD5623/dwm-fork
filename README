@@ -1,15 +1,27 @@
 Requirements
 ------------
 In order to build/use my version of dwm
-you need the Xlib header files, ROFI,
-mupdf, brightnessctl and pulseaudio.
+out of the box you need:
+* the Xlib header files
+* ROFI
+* stow (change install dir if you don't want it)
+* brightnessctl
+* slock, maim, xdotool, xclip
+* pulseaudio, pulsemixer, playerctl
+* goblocks (see https://github.com/Stargarth/Goblocks)
+
+Optional
+* Daemonized Emacs with mu4e
+
+You'll also need some extra fonts:
+UbuntuMono Nerd Font Mono and Noto Color Emoji.
 
 Patches
 ------------
 * My personal edit to the spawn function to use ROFI
   on multiple monitors.
   (fix-mon-rofi-6.x.diff)
-  
+
 Community submitted
 --------------------
 * Perl tags for a different layout on each tag.
@@ -17,10 +29,10 @@ Community submitted
 
 * Automagically move the mouse to the focused window.
   (dwm-warp-6.x.diff)
-  
+
 * Load Xresources specific defaults for DWM
   (dwm-xresources-6.x.diff)
-  
+
 * Spawn new windows on top of focused client.
   (dwm-attachabove-6.x.diff)
 

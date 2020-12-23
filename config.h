@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -93,7 +94,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -106,6 +107,29 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenuunicode") },
+	/* Media Keys */
+	{ 0, XF86XK_AudioMute,		    spawn,  SHCMD("pamixer -t; pkill -RTMIN+2 goblocks") },
+	{ 0, XF86XK_AudioRaiseVolume,	spawn,  SHCMD("pamixer --allow-boost -i 5; pkill -RTMIN+2 goblocks") },
+	{ 0, XF86XK_AudioLowerVolume,	spawn,  SHCMD("pamixer --allow-boost -d 5; pkill -RTMIN+2 goblocks") },
+	{ 0, XK_Print,	                spawn,  SHCMD("maimpick") },
+	{ 0, XF86XK_AudioPause,		    spawn,  SHCMD("playerctl pause") },
+	{ 0, XF86XK_AudioPlay,		    spawn,  SHCMD("playerctl play") },
+	{ 0, XF86XK_AudioStop,		    spawn,  SHCMD("playerctl stop") },
+	{ 0, XF86XK_AudioRewind,	    spawn,  SHCMD("playerctl seek -10") },
+	{ 0, XF86XK_AudioForward,	    spawn,  SHCMD("playerctl seek +10") },
+	{ 0, XF86XK_AudioPrev,		    spawn,  SHCMD("playerctl previous") },
+	{ 0, XF86XK_AudioNext,		    spawn,  SHCMD("playerctl next") },
+	{ 0, XF86XK_AudioMicMute,	    spawn,  SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+	{ MODKEY, XK_a,                 spawn,  SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+	{ 0, XF86XK_Sleep,		        spawn,	SHCMD("systemctl sleep") },
+	{ 0, XF86XK_WWW,		        spawn,	SHCMD("$BROWSER") },
+	{ MODKEY, XK_w,		            spawn,	SHCMD("$BROWSER") },
+	{ 0, XF86XK_ScreenSaver,	    spawn,	SHCMD("slock & xset dpms force off; playerctl pause") },
+	{ MODKEY, XK_g,	                spawn,	SHCMD("slock & xset dpms force off; playerctl pause") },
+	{ 0, XF86XK_Mail,		        spawn,	SHCMD("emacsclient -q -u -c --eval '(mu4e)'") },
+	{ 0, XF86XK_MonBrightnessUp,	spawn,	SHCMD("brightnessctl set +5%") },
+	{ 0, XF86XK_MonBrightnessDown,	spawn,	SHCMD("brightnessctl set 5%-") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
