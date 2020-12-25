@@ -108,6 +108,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
     { MODKEY,                       XK_grave,  spawn,          SHCMD("dmenuunicode") },
+    { MODKEY,                       XK_c,      spawn,          SHCMD("rofi_iwd.sh") },
     /* Media Keys */
     { 0, XF86XK_AudioMute,          spawn,  SHCMD("pamixer -t; pkill -RTMIN+2 goblocks") },
     { 0, XF86XK_AudioRaiseVolume,   spawn,  SHCMD("pamixer --allow-boost -i 5; pkill -RTMIN+2 goblocks") },
